@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рецепт — Вкусно.Тут</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo"><img src="img/лого.png" alt="Логотип" class="logo-icon"><span class="logo-text">Вкусно.Тут</span></a>
+            <button class="burger" id="burgerBtn" aria-label="Меню"><span></span><span></span><span></span></button>
+            <nav class="nav" id="mainNav">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="catalog.html" class="nav-link">Каталог</a>
+                <a href="create.html" class="nav-link">Создать</a>
+                <a href="about.html" class="nav-link">О нас</a>
+                <a href="profile.html" class="nav-link">Профиль</a>
+                <div class="header-buttons"></div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="recipe-page">
+        <div class="container">
+            <a href="catalog.html" class="back-link">← Назад в каталог</a>
+            <div class="recipe-hero">
+                <div class="recipe-hero-img"><img src="img/паста.jpg" alt="" id="recipeImage"></div>
+                <div class="recipe-hero-info">
+                    <h1 class="recipe-title" id="recipeTitle">Загрузка...</h1>
+                    <p class="recipe-desc" id="recipeDesc"></p>
+                    <div class="recipe-meta">
+                        <div class="recipe-meta-item"><span class="recipe-meta-label">Время</span><span class="recipe-meta-value" id="recipeTime">—</span></div>
+                        <div class="recipe-meta-item"><span class="recipe-meta-label">Сложность</span><span class="recipe-meta-value" id="recipeDifficulty">—</span></div>
+                        <div class="recipe-meta-item"><span class="recipe-meta-label">Калории</span><span class="recipe-meta-value" id="recipeCalories">—</span></div>
+                    </div>
+                    <div class="recipe-author">
+                        <div class="recipe-author-avatar" id="authorAvatar">М</div>
+                        <div>
+                            <div class="recipe-author-name" id="authorName">Автор</div>
+                            <div class="recipe-author-role">Автор рецепта</div>
+                        </div>
+                    </div>
+                    <div class="recipe-actions">
+                        <button class="btn btn-primary" id="favBtn">В избранное</button>
+                        <button class="btn btn-outline" id="shareBtn">Поделиться</button>
+                    </div>
+                </div>
+            </div>
+
+            <section class="recipe-section">
+                <div class="recipe-section-head">
+                    <h2 class="recipe-section-title">Ингредиенты</h2>
+                    <button class="portion-btn" id="portionBtn" data-base="2">×2 порции</button>
+                </div>
+                <div class="ingredients-list" id="ingredientsList"></div>
+            </section>
+
+            <section class="recipe-section">
+                <h2 class="recipe-section-title">Пошаговое приготовление</h2>
+                <div class="steps-list" id="stepsList"></div>
+            </section>
+
+            <!-- КОММЕНТАРИИ -->
+<section class="recipe-section">
+    <h2 class="recipe-section-title" id="commentsTitle">Комментарии (0)</h2>
+
+    <div class="comment-form">
+        <textarea class="comment-input" id="commentInput" placeholder="Поделитесь своим мнением о рецепте..."></textarea>
+        <button class="btn btn-primary comment-submit" id="commentBtn">Отправить</button>
+    </div>
+
+    <div class="comments-list" id="commentsList">
+        <p class="comments-empty">Комментариев пока нет. Будьте первым!</p>
+    </div>
+</section>
+        </div>
+    </main>
+
+    <footer class="footer">
+    <div class="container footer-inner">
+        <div class="footer-col">
+            <div class="logo">
+                <img src="img/лого.png" alt="Логотип" class="logo-icon logo-white">
+                <span class="logo-text">Вкусно.Тут</span>
+            </div>
+            <p class="footer-copy">© 2026 Вкусно.Тут. Все права защищены.</p>
+        </div>
+        <div class="footer-col">
+            <h4 class="footer-title">О нас</h4>
+            <a href="about.html" class="footer-link">О сервисе</a>
+            <a href="about.html#mission" class="footer-link">Наша миссия</a>
+            <a href="about.html#team" class="footer-link">Команда</a>
+            <a href="about.html#contact" class="footer-link">Контакты</a>
+        </div>
+        <div class="footer-col">
+            <h4 class="footer-title">Помощь</h4>
+            <a href="catalog.html" class="footer-link">Каталог рецептов</a>
+            <a href="create.html" class="footer-link">Создать рецепт</a>
+            <a href="about.html#contact" class="footer-link">Поддержка</a>
+        </div>
+        <div class="footer-col">
+            <h4 class="footer-title">Соцсети</h4>
+            <a href="https://vk.com" target="_blank" rel="noopener noreferrer" class="footer-link">ВКонтакте</a>
+            <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="footer-link">Telegram</a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="footer-link">YouTube</a>
+        </div>
+    </div>
+</footer>
+    <script src="catalog-data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

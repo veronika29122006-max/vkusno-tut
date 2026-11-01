@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вкусно.Тут — Интерактивные рецепты</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <img src="img/лого.png" alt="Логотип" class="logo-icon">
+                <span class="logo-text">Вкусно.Тут</span>
+            </a>
+            <button class="burger" id="burgerBtn" aria-label="Меню"><span></span><span></span><span></span></button>
+            <nav class="nav" id="mainNav">
+                <a href="index.html" class="nav-link active">Главная</a>
+                <a href="catalog.html" class="nav-link">Каталог</a>
+                <a href="create.html" class="nav-link">Создать</a>
+                <a href="about.html" class="nav-link">О нас</a>
+                <a href="profile.html" class="nav-link">Профиль</a>
+                <div class="header-buttons"></div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="banner">
+        <div class="banner-overlay"></div>
+        <div class="container banner-content">
+            <h1 class="banner-title">
+    Создавай<br>
+    <span id="changingWord" class="changing-word">интерактивные</span><br>
+    рецепты
+</h1>
+            <p class="banner-subtitle">Пошаговые инструкции, встроенные таймеры и публикация в один клик</p>
+            <div class="banner-buttons">
+                <a href="create.html" class="btn btn-primary btn-lg">Начать готовить</a>
+                <a href="catalog.html" class="btn btn-glass btn-lg">Смотреть каталог</a>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+    <div class="container">
+        <h2 class="section-title">Категории блюд</h2>
+        <p class="section-subtitle">Выбери по вкусу</p>
+        <div class="categories-grid">
+            <a href="catalog.html?product=Мясо" class="category category-img" style="background-image: url('img/мясо.jpeg');">
+                <div class="category-overlay"></div>
+                <div class="category-name">Мясо</div>
+            </a>
+            <a href="catalog.html?product=Рыба" class="category category-img" style="background-image: url('img/рыба.webp');">
+                <div class="category-overlay"></div>
+                <div class="category-name">Рыба</div>
+            </a>
+            <a href="catalog.html?product=Птица" class="category category-img" style="background-image: url('img/птица.webp');">
+                <div class="category-overlay"></div>
+                <div class="category-name">Птица</div>
+            </a>
+            <a href="catalog.html?product=Овощи" class="category category-img" style="background-image: url('img/овощи1.webp');">
+                <div class="category-overlay"></div>
+                <div class="category-name">Овощи</div>
+            </a>
+            <a href="catalog.html?product=Фрукты" class="category category-img" style="background-image: url('img/фрукты.webp');">
+                <div class="category-overlay"></div>
+                <div class="category-name">Фрукты</div>
+            </a>
+            <a href="catalog.html?product=Грибы" class="category category-img" style="background-image: url('img/грибы.webp');">
+                <div class="category-overlay"></div>
+                <div class="category-name">Грибы</div>
+            </a>
+            <a href="catalog.html?product=Молочное" class="category category-img" style="background-image: url('img/молочное.jpg');">
+                <div class="category-overlay"></div>
+                <div class="category-name">Молочное</div>
+            </a>
+            <a href="catalog.html?type=Десерт" class="category category-img" style="background-image: url('img/десерт.webp');">
+                <div class="category-overlay"></div>
+                <div class="category-name">Десерты</div>
+            </a>
+        </div>
+    </div>
+</section>
+    <section class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Популярные рецепты</h2>
+            <p class="section-subtitle">Лучшие рецепты от нашего сообщества</p>
+            <div class="cards-grid">
+                <a href="recipe.html?id=1" class="card">
+                    <div class="card-img"><img src="img/паста.webp" alt="Паста Карбонара"></div>
+                    <div class="card-body">
+                        <h3 class="card-title">Паста Карбонара</h3>
+                        <p class="card-desc">Классический итальянский ужин</p>
+                        <div class="card-meta">⏱ 25 мин · 🟢 Легко</div>
+                    </div>
+                </a>
+                <a href="recipe.html?id=13" class="card">
+                    <div class="card-img"><img src="img/салат.webp" alt="Греческий салат"></div>
+                    <div class="card-body">
+                        <h3 class="card-title">Греческий салат</h3>
+                        <p class="card-desc">Свежий и лёгкий</p>
+                        <div class="card-meta">⏱ 10 мин · 🟢 Легко</div>
+                    </div>
+                </a>
+                <a href="recipe.html?id=7" class="card">
+                    <div class="card-img"><img src="img/плов.webp" alt="Плов с курицей"></div>
+                    <div class="card-body">
+                        <h3 class="card-title">Плов с курицей</h3>
+                        <p class="card-desc">Ароматный узбекский плов</p>
+                        <div class="card-meta">⏱ 50 мин · 🟡 Средне</div>
+                    </div>
+                </a>
+                <a href="recipe.html?id=14" class="card">
+                    <div class="card-img"><img src="img/суп.webp" alt="Томатный суп"></div>
+                    <div class="card-body">
+                        <h3 class="card-title">Томатный суп</h3>
+                        <p class="card-desc">Согревающий зимой</p>
+                        <div class="card-meta">⏱ 35 мин · 🟢 Легко</div>
+                    </div>
+                </a>
+            </div>
+            <div class="section-center"><a href="catalog.html" class="btn btn-outline btn-lg">Все рецепты</a></div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="recipe-day">
+                <div class="recipe-day-img"><img src="img/паста.webp" alt="Рецепт дня"></div>
+                <div class="recipe-day-content">
+                    <div class="recipe-day-badge">Рецепт дня</div>
+                    <h2 class="recipe-day-title">Паста Карбонара</h2>
+                    <p class="recipe-day-desc">Классика итальянской кухни — густая, ароматная, с хрустящим гуанчале и нежным соусом из яиц и сыра пекорино.</p>
+                    <div class="recipe-day-meta"><span>⏱ 25 мин</span><span>🟢 Легко</span><span>🔥 320 ккал</span></div>
+                    <a href="recipe.html?id=1" class="btn btn-primary btn-lg">Смотреть рецепт</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Как это работает</h2>
+            <p class="section-subtitle">Три простых шага до готового блюда</p>
+            <div class="steps">
+                <div class="step"><div class="step-circle">1</div><h3 class="step-title">Найди рецепт</h3><p class="step-desc">Выбери из тысячи рецептов</p></div>
+                <div class="step-arrow">→</div>
+                <div class="step"><div class="step-circle">2</div><h3 class="step-title">Готовь по шагам</h3><p class="step-desc">Следуй инструкции</p></div>
+                <div class="step-arrow">→</div>
+                <div class="step"><div class="step-circle">3</div><h3 class="step-title">Публикуй свой</h3><p class="step-desc">Делись с другими</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Что говорят пользователи</h2>
+            <p class="section-subtitle">Более 12 000 отзывов от наших гостей</p>
+            <div class="reviews-grid">
+                <div class="review">
+                    <div class="review-stars">5.0</div>
+                    <p class="review-text">«Очень удобно готовить — таймеры прямо в шагах. Больше не отвлекаюсь на телефон!»</p>
+                    <div class="review-author"><div class="review-avatar">А</div><div><div class="review-name">Анна Петрова</div><div class="review-role">Любит готовить дома</div></div></div>
+                </div>
+                <div class="review">
+                    <div class="review-stars">5.0</div>
+                    <p class="review-text">«Наконец-то нашёл сайт, где можно не просто смотреть рецепты, а реально по ним готовить.»</p>
+                    <div class="review-author"><div class="review-avatar">П</div><div><div class="review-name">Пётр Сидоров</div><div class="review-role">Начинающий кулинар</div></div></div>
+                </div>
+                <div class="review">
+                    <div class="review-stars">5.0</div>
+                    <p class="review-text">«Опубликовала свой первый рецепт — получила кучу лайков и подписчиков. Спасибо!»</p>
+                    <div class="review-author"><div class="review-avatar">М</div><div><div class="review-name">Мария Иванова</div><div class="review-role">Автор рецептов</div></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+    <div class="container footer-inner">
+        <div class="footer-col">
+            <div class="logo">
+                <img src="img/лого.png" alt="Логотип" class="logo-icon logo-white">
+                <span class="logo-text">Вкусно.Тут</span>
+            </div>
+            <p class="footer-copy">© 2026 Вкусно.Тут. Все права защищены.</p>
+        </div>
+        <div class="footer-col">
+            <h4 class="footer-title">О нас</h4>
+            <a href="about.html" class="footer-link">О сервисе</a>
+            <a href="about.html#mission" class="footer-link">Наша миссия</a>
+            <a href="about.html#team" class="footer-link">Команда</a>
+            <a href="about.html#contact" class="footer-link">Контакты</a>
+        </div>
+        <div class="footer-col">
+            <h4 class="footer-title">Помощь</h4>
+            <a href="catalog.html" class="footer-link">Каталог рецептов</a>
+            <a href="create.html" class="footer-link">Создать рецепт</a>
+            <a href="about.html#contact" class="footer-link">Поддержка</a>
+        </div>
+        <div class="footer-col">
+            <h4 class="footer-title">Соцсети</h4>
+            <a href="https://vk.com" target="_blank" rel="noopener noreferrer" class="footer-link">ВКонтакте</a>
+            <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="footer-link">Telegram</a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="footer-link">YouTube</a>
+        </div>
+    </div>
+</footer>
+    <script src="catalog-data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

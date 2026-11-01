@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход и регистрация — Вкусно.Тут</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo"><img src="img/лого.png" alt="Логотип" class="logo-icon"><span class="logo-text">Вкусно.Тут</span></a>
+            <button class="burger" id="burgerBtn" aria-label="Меню"><span></span><span></span><span></span></button>
+            <nav class="nav" id="mainNav">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="catalog.html" class="nav-link">Каталог</a>
+                <a href="create.html" class="nav-link">Создать</a>
+                <a href="about.html" class="nav-link">О нас</a>
+                <a href="profile.html" class="nav-link">Профиль</a>
+                <div class="header-buttons"></div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="auth-page">
+        <div class="container">
+            <div class="auth-box">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" data-tab="login">Вход</button>
+                    <button class="auth-tab" data-tab="register">Регистрация</button>
+                </div>
+
+                <form class="auth-form active" id="loginForm" onsubmit="return false;">
+                    <h2 class="auth-title">Добро пожаловать!</h2>
+                    <p class="auth-subtitle">Войдите, чтобы сохранять рецепты и публиковать свои</p>
+                    <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="loginEmail" placeholder="you@example.com"></div>
+                    <div class="form-group"><label class="form-label">Пароль</label><input type="password" class="form-input" id="loginPassword" placeholder="••••••••"></div>
+                    <button type="button" class="btn btn-primary btn-lg auth-btn" id="loginBtn">Войти</button>
+                </form>
+
+                <form class="auth-form" id="registerForm" onsubmit="return false;">
+                    <h2 class="auth-title">Создать аккаунт</h2>
+                    <p class="auth-subtitle">Зарегистрируйтесь, чтобы делиться своими рецептами</p>
+                    <div class="form-group"><label class="form-label">Имя</label><input type="text" class="form-input" id="regName" placeholder="Как вас зовут?"></div>
+                    <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="regEmail" placeholder="you@example.com"></div>
+                    <div class="form-group"><label class="form-label">Пароль</label><input type="password" class="form-input" id="regPassword" placeholder="Минимум 6 символов"></div>
+                    <button type="button" class="btn btn-primary btn-lg auth-btn" id="registerBtn">Зарегистрироваться</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-col">
+                <div class="logo">
+                    <img src="img/лого.png" alt="Логотип" class="logo-icon logo-white">
+                    <span class="logo-text">Вкусно.Тут</span>
+                </div>
+                <p class="footer-copy">© 2026 Вкусно.Тут. Все права защищены.</p>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">О нас</h4>
+                <a href="about.html" class="footer-link">О сервисе</a>
+                <a href="about.html#mission" class="footer-link">Наша миссия</a>
+                <a href="about.html#team" class="footer-link">Команда</a>
+                <a href="about.html#contact" class="footer-link">Контакты</a>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Помощь</h4>
+                <a href="catalog.html" class="footer-link">Каталог рецептов</a>
+                <a href="create.html" class="footer-link">Создать рецепт</a>
+                <a href="about.html#contact" class="footer-link">Поддержка</a>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Соцсети</h4>
+                <a href="https://vk.com" target="_blank" rel="noopener noreferrer" class="footer-link">ВКонтакте</a>
+                <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="footer-link">Telegram</a>
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="footer-link">YouTube</a>
+            </div>
+        </div>
+    </footer>
+    <script src="catalog-data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой профиль — Вкусно.Тут</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo"><img src="img/лого.png" alt="Логотип" class="logo-icon"><span class="logo-text">Вкусно.Тут</span></a>
+            <button class="burger" id="burgerBtn" aria-label="Меню"><span></span><span></span><span></span></button>
+            <nav class="nav" id="mainNav">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="catalog.html" class="nav-link">Каталог</a>
+                <a href="create.html" class="nav-link">Создать</a>
+                <a href="about.html" class="nav-link">О нас</a>
+                <a href="profile.html" class="nav-link active">Профиль</a>
+                <div class="header-buttons"></div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="profile-page">
+        <div class="container">
+            <div class="profile-header">
+                <div class="profile-avatar" id="profileAvatar">П</div>
+                <div class="profile-info">
+                    <h1 class="profile-name" id="profileName">Пользователь</h1>
+                    <p class="profile-nick" id="profileNick">@user</p>
+                    <p class="profile-desc" id="profileDesc">Люблю готовить</p>
+                </div>
+                <div class="profile-actions">
+                    <button class="btn btn-outline" id="editProfileBtn">Редактировать профиль</button>
+                    <a href="create.html" class="btn btn-primary">+ Создать рецепт</a>
+                </div>
+            </div>
+
+            <div class="profile-stats">
+                <div class="profile-stat"><div class="profile-stat-number" id="statRecipes">0</div><div class="profile-stat-label">рецептов</div></div>
+                <div class="profile-stat"><div class="profile-stat-number" id="statFavorites">0</div><div class="profile-stat-label">в избранном</div></div>
+                <div class="profile-stat"><div class="profile-stat-number" id="statComments">0</div><div class="profile-stat-label">комментариев</div></div>
+                <div class="profile-stat"><div class="profile-stat-number" id="statDrafts">0</div><div class="profile-stat-label">черновиков</div></div>
+            </div>
+
+            <div class="profile-tabs">
+                <button class="profile-tab active" data-tab="my">Мои рецепты</button>
+                <button class="profile-tab" data-tab="favorites">Избранное</button>
+                <button class="profile-tab" data-tab="drafts">Черновики</button>
+            </div>
+
+            <div class="profile-grid" id="profileGrid"></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+    <div class="container footer-inner">
+        <div class="footer-col">
+            <div class="logo">
+                <img src="img/лого.png" alt="Логотип" class="logo-icon logo-white">
+                <span class="logo-text">Вкусно.Тут</span>
+            </div>
+            <p class="footer-copy">© 2026 Вкусно.Тут. Все права защищены.</p>
+        </div>
+        <div class="footer-col">
+            <h4 class="footer-title">О нас</h4>
+            <a href="about.html" class="footer-link">О сервисе</a>
+            <a href="about.html#mission" class="footer-link">Наша миссия</a>
+            <a href="about.html#team" class="footer-link">Команда</a>
+            <a href="about.html#contact" class="footer-link">Контакты</a>
+        </div>
+        <div class="footer-col">
+            <h4 class="footer-title">Помощь</h4>
+            <a href="catalog.html" class="footer-link">Каталог рецептов</a>
+            <a href="create.html" class="footer-link">Создать рецепт</a>
+            <a href="about.html#contact" class="footer-link">Поддержка</a>
+        </div>
+        <div class="footer-col">
+            <h4 class="footer-title">Соцсети</h4>
+            <a href="https://vk.com" target="_blank" rel="noopener noreferrer" class="footer-link">ВКонтакте</a>
+            <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="footer-link">Telegram</a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="footer-link">YouTube</a>
+        </div>
+    </div>
+</footer>
+
+    <div class="modal" id="editProfileModal">
+        <div class="modal-box">
+            <h2 class="modal-title">Редактировать профиль</h2>
+            <div class="form-group">
+                <label class="form-label">Фото профиля</label>
+                <div class="photo-upload photo-upload-small" id="avatarUpload">
+                    <input type="file" id="avatarInput" accept="image/*" hidden>
+                    <div class="photo-upload-placeholder" id="avatarPlaceholder">
+                        <div class="photo-upload-icon">📷</div>
+                        <div class="photo-upload-text">Загрузить фото</div>
+                    </div>
+                    <img id="avatarPreview" class="photo-preview" style="display: none;" alt="Аватар">
+                </div>
+                <button type="button" class="photo-remove-btn" id="avatarRemoveBtn" style="display: none;">Удалить фото</button>
+            </div>
+            <div class="form-group"><label class="form-label">Имя</label><input type="text" class="form-input" id="editName" placeholder="Ваше имя"></div>
+            <div class="form-group"><label class="form-label">Ник (логин)</label><input type="text" class="form-input" id="editNick" placeholder="@nickname"></div>
+            <div class="form-group"><label class="form-label">Описание</label><textarea class="form-textarea" id="editDesc" placeholder="О себе..."></textarea></div>
+            <div class="modal-actions">
+                <button type="button" class="btn btn-outline" id="cancelEditBtn">Отмена</button>
+                <button type="button" class="btn btn-primary" id="saveProfileBtn">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="catalog-data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

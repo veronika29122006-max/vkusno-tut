@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог рецептов — Вкусно.Тут</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo"><img src="img/лого.png" alt="Логотип" class="logo-icon"><span class="logo-text">Вкусно.Тут</span></a>
+            <button class="burger" id="burgerBtn" aria-label="Меню"><span></span><span></span><span></span></button>
+            <nav class="nav" id="mainNav">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="catalog.html" class="nav-link active">Каталог</a>
+                <a href="create.html" class="nav-link">Создать</a>
+                <a href="about.html" class="nav-link">О нас</a>
+                <a href="profile.html" class="nav-link">Профиль</a>
+                <div class="header-buttons"></div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="catalog-header">
+        <div class="container catalog-header-inner">
+            <h1 class="catalog-title">Каталог рецептов</h1>
+            <div class="catalog-found">Найдено: <span id="foundCount">0</span> рецептов</div>
+        </div>
+    </section>
+
+    <section class="catalog-search-section">
+        <div class="container">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Поиск рецепта по названию или ингредиенту...">
+                <button class="btn btn-primary" id="searchBtn">Найти</button>
+            </div>
+            <div class="chips" id="chipsContainer"></div>
+        </div>
+    </section>
+
+    <section class="catalog-main">
+        <div class="container catalog-layout">
+            <aside class="filters">
+                <h3 class="filters-title">Фильтры</h3>
+                <div class="filter-group"><h4 class="filter-heading">Тип блюда</h4>
+                    <label class="filter-label"><input type="checkbox" data-filter="type" value="Завтрак"><span>Завтрак</span></label>
+                    <label class="filter-label"><input type="checkbox" data-filter="type" value="Обед"><span>Обед</span></label>
+                    <label class="filter-label"><input type="checkbox" data-filter="type" value="Ужин"><span>Ужин</span></label>
+                    <label class="filter-label"><input type="checkbox" data-filter="type" value="Десерт"><span>Десерт</span></label>
+                </div>
+                <div class="filter-group"><h4 class="filter-heading">Основной продукт</h4>
+                    <label class="filter-label"><input type="checkbox" data-filter="product" value="Мясо"><span>Мясо</span></label>
+                    <label class="filter-label"><input type="checkbox" data-filter="product" value="Птица"><span>Птица</span></label>
+                    <label class="filter-label"><input type="checkbox" data-filter="product" value="Рыба"><span>Рыба</span></label>
+                    <label class="filter-label"><input type="checkbox" data-filter="product" value="Овощи"><span>Овощи</span></label>
+                    <label class="filter-label"><input type="checkbox" data-filter="product" value="Фрукты"><span>Фрукты</span></label>
+                    <label class="filter-label"><input type="checkbox" data-filter="product" value="Грибы"><span>Грибы</span></label>
+                    <label class="filter-label"><input type="checkbox" data-filter="product" value="Молочное"><span>Молочное</span></label>
+                    <label class="filter-label"><input type="checkbox" data-filter="product" value="Крупы"><span>Крупы</span></label>
+                    <label class="filter-label"><input type="checkbox" data-filter="product" value="Тесто"><span>Тесто</span></label>
+                </div>
+                <div class="filter-group"><h4 class="filter-heading">Кухня мира</h4>
+                    <label class="filter-label"><input type="checkbox" data-filter="cuisine" value="Итальянская"><span>Итальянская</span></label>
+                    <label class="filter-label"><input type="checkbox" data-filter="cuisine" value="Русская"><span>Русская</span></label>
+                    <label class="filter-label"><input type="checkbox" data-filter="cuisine" value="Азиатская"><span>Азиатская</span></label>
+                    <label class="filter-label"><input type="checkbox" data-filter="cuisine" value="Французская"><span>Французская</span></label>
+                    <label class="filter-label"><input type="checkbox" data-filter="cuisine" value="Грузинская"><span>Грузинская</span></label>
+                </div>
+                <div class="filter-group"><h4 class="filter-heading">Время готовки</h4>
+                    <label class="filter-label"><input type="radio" name="time" value="short"><span>До 15 мин</span></label>
+                    <label class="filter-label"><input type="radio" name="time" value="medium"><span>15-30 мин</span></label>
+                    <label class="filter-label"><input type="radio" name="time" value="long"><span>30-60 мин</span></label>
+                    <label class="filter-label"><input type="radio" name="time" value="verylong"><span>Больше часа</span></label>
+                </div>
+                <div class="filter-group"><h4 class="filter-heading">Сложность</h4>
+                    <label class="filter-label"><input type="checkbox" data-filter="difficulty" value="Легко"><span>Легко</span></label>
+                    <label class="filter-label"><input type="checkbox" data-filter="difficulty" value="Средне"><span>Средне</span></label>
+                    <label class="filter-label"><input type="checkbox" data-filter="difficulty" value="Сложно"><span>Сложно</span></label>
+                </div>
+                <button class="reset-filters" id="resetFilters">Сбросить фильтры</button>
+            </aside>
+
+            <main class="results">
+                <div class="sort-bar">
+                    <div class="sort-label">Сортировка:</div>
+                    <select class="sort-select" id="sortSelect">
+                        <option value="popular">По популярности</option>
+                        <option value="fast">Быстрые сначала</option>
+                        <option value="calories">По калориям</option>
+                        <option value="name">По алфавиту</option>
+                    </select>
+                </div>
+                <div class="results-grid" id="resultsGrid"></div>
+                <div class="pagination" id="pagination"></div>
+            </main>
+        </div>
+    </section>
+
+    <footer class="footer">
+    <div class="container footer-inner">
+        <div class="footer-col">
+            <div class="logo">
+                <img src="img/лого.png" alt="Логотип" class="logo-icon logo-white">
+                <span class="logo-text">Вкусно.Тут</span>
+            </div>
+            <p class="footer-copy">© 2026 Вкусно.Тут. Все права защищены.</p>
+        </div>
+        <div class="footer-col">
+            <h4 class="footer-title">О нас</h4>
+            <a href="about.html" class="footer-link">О сервисе</a>
+            <a href="about.html#mission" class="footer-link">Наша миссия</a>
+            <a href="about.html#team" class="footer-link">Команда</a>
+            <a href="about.html#contact" class="footer-link">Контакты</a>
+        </div>
+        <div class="footer-col">
+            <h4 class="footer-title">Помощь</h4>
+            <a href="catalog.html" class="footer-link">Каталог рецептов</a>
+            <a href="create.html" class="footer-link">Создать рецепт</a>
+            <a href="about.html#contact" class="footer-link">Поддержка</a>
+        </div>
+        <div class="footer-col">
+            <h4 class="footer-title">Соцсети</h4>
+            <a href="https://vk.com" target="_blank" rel="noopener noreferrer" class="footer-link">ВКонтакте</a>
+            <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="footer-link">Telegram</a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="footer-link">YouTube</a>
+        </div>
+    </div>
+</footer>
+    <script src="catalog-data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

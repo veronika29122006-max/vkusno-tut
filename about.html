@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О нас — Вкусно.Тут</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo"><img src="img/лого.png" alt="Логотип" class="logo-icon"><span class="logo-text">Вкусно.Тут</span></a>
+            <button class="burger" id="burgerBtn" aria-label="Меню"><span></span><span></span><span></span></button>
+            <nav class="nav" id="mainNav">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="catalog.html" class="nav-link">Каталог</a>
+                <a href="create.html" class="nav-link">Создать</a>
+                <a href="about.html" class="nav-link active">О нас</a>
+                <a href="profile.html" class="nav-link">Профиль</a>
+                <div class="header-buttons"></div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="about-page">
+        <div class="container">
+            <div class="about-header">
+                <h1 class="about-title">О нас</h1>
+                <p class="about-subtitle">Мы создаём сервис, который делает готовку простой и увлекательной</p>
+            </div>
+
+            <section class="about-mission" id="mission">
+                <div class="about-mission-content">
+                    <h2 class="about-block-title">Наша миссия</h2>
+                    <p class="about-text">Мы верим, что готовить может каждый. Наша задача — сделать процесс приготовления простым, понятным и увлекательным.</p>
+                    <p class="about-text">Интерактивные рецепты с таймерами помогают не отвлекаться и следить за каждым шагом. Публикуйте свои блюда и делитесь опытом с другими.</p>
+                </div>
+                <div class="about-mission-img"><img src="img/о нас.jpg" alt="Кухня"></div>
+            </section>
+
+            <section class="about-stats-section">
+                <h2 class="about-block-title">Мы в цифрах</h2>
+                <div class="about-stats">
+                    <div class="about-stat"><div class="about-stat-number">12 458</div><div class="about-stat-label">рецептов</div></div>
+                    <div class="about-stat"><div class="about-stat-number">3 240</div><div class="about-stat-label">авторов</div></div>
+                    <div class="about-stat"><div class="about-stat-number">48</div><div class="about-stat-label">категорий</div></div>
+                    <div class="about-stat"><div class="about-stat-number">98%</div><div class="about-stat-label">довольны</div></div>
+                </div>
+            </section>
+
+            <section class="about-team-section" id="team">
+                <h2 class="about-block-title">Наша команда</h2>
+                <p class="about-section-subtitle">Люди, которые делают сервис для вас</p>
+                <div class="about-team">
+                    <div class="team-card">
+                        <div class="team-img"><img src="img/М.webp" alt="Мария Иванова"></div>
+                        <div class="team-info"><div class="team-name">Мария Иванова</div><div class="team-role">Основатель</div></div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-img"><img src="img/П.webp" alt="Пётр Сидоров"></div>
+                        <div class="team-info"><div class="team-name">Пётр Сидоров</div><div class="team-role">Шеф-повар</div></div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-img"><img src="img/А.jpg" alt="Анна Смирнова"></div>
+                        <div class="team-info"><div class="team-name">Анна Смирнова</div><div class="team-role">Дизайнер</div></div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-img"><img src="img/И.webp" alt="Иван Петров"></div>
+                        <div class="team-info"><div class="team-name">Иван Петров</div><div class="team-role">Разработчик</div></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about-contact" id="contact">
+                <div class="about-contact-content">
+                    <h2 class="about-contact-title">Свяжитесь с нами</h2>
+                    <p class="about-contact-subtitle">Ответим на любые вопросы о сервисе</p>
+                    <div class="about-contact-list">
+                        <div class="about-contact-item"><span class="about-contact-icon">📧</span><span>hello@vkusno.tut</span></div>
+                        <div class="about-contact-item"><span class="about-contact-icon">📞</span><span>+7 (999) 123-45-67</span></div>
+                        <div class="about-contact-item"><span class="about-contact-icon">📍</span><span>Москва, ул. Кулинарная, 15</span></div>
+                    </div>
+                </div>
+                <div class="about-contact-form">
+                    <input type="text" class="form-input" placeholder="Ваше имя">
+                    <input type="email" class="form-input" placeholder="Ваш email">
+                    <textarea class="form-textarea" placeholder="Ваше сообщение..."></textarea>
+                    <button type="button" class="btn btn-primary btn-lg" id="contactSendBtn">Отправить сообщение</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-col">
+                <div class="logo">
+                    <img src="img/лого.png" alt="Логотип" class="logo-icon logo-white">
+                    <span class="logo-text">Вкусно.Тут</span>
+                </div>
+                <p class="footer-copy">© 2026 Вкусно.Тут. Все права защищены.</p>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">О нас</h4>
+                <a href="about.html" class="footer-link">О сервисе</a>
+                <a href="about.html#mission" class="footer-link">Наша миссия</a>
+                <a href="about.html#team" class="footer-link">Команда</a>
+                <a href="about.html#contact" class="footer-link">Контакты</a>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Помощь</h4>
+                <a href="catalog.html" class="footer-link">Каталог рецептов</a>
+                <a href="create.html" class="footer-link">Создать рецепт</a>
+                <a href="about.html#contact" class="footer-link">Поддержка</a>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Соцсети</h4>
+                <a href="https://vk.com" target="_blank" rel="noopener noreferrer" class="footer-link">ВКонтакте</a>
+                <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="footer-link">Telegram</a>
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="footer-link">YouTube</a>
+            </div>
+        </div>
+    </footer>
+    <script src="catalog-data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

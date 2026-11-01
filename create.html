@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создать рецепт — Вкусно.Тут</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo"><img src="img/лого.png" alt="Логотип" class="logo-icon"><span class="logo-text">Вкусно.Тут</span></a>
+            <button class="burger" id="burgerBtn" aria-label="Меню"><span></span><span></span><span></span></button>
+            <nav class="nav" id="mainNav">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="catalog.html" class="nav-link">Каталог</a>
+                <a href="create.html" class="nav-link active">Создать</a>
+                <a href="about.html" class="nav-link">О нас</a>
+                <a href="profile.html" class="nav-link">Профиль</a>
+                <div class="header-buttons"></div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="create-page">
+        <div class="container">
+            <div class="create-header">
+                <div>
+                    <h1 class="create-title">Создание рецепта</h1>
+                    <p class="create-subtitle">Поделитесь своим рецептом с сообществом</p>
+                </div>
+                <a href="index.html" class="btn btn-outline">Отмена</a>
+            </div>
+
+            <form class="create-form" id="createForm" onsubmit="return false;">
+                <section class="create-block">
+                    <h2 class="create-block-title">Основная информация</h2>
+                    <div class="form-group"><label class="form-label">Название рецепта *</label><input type="text" class="form-input" id="recipeName" placeholder="Например: Паста Карбонара"></div>
+                    <div class="form-group"><label class="form-label">Описание</label><textarea class="form-textarea" id="recipeDesc" placeholder="Коротко опишите рецепт..."></textarea></div>
+                    <div class="form-group">
+                        <label class="form-label">Фото блюда</label>
+                        <div class="photo-upload" id="photoUpload">
+                            <input type="file" id="photoInput" accept="image/*" hidden>
+                            <div class="photo-upload-placeholder" id="photoPlaceholder">
+                                <div class="photo-upload-icon">📷</div>
+                                <div class="photo-upload-text">Нажмите, чтобы загрузить фото</div>
+                            </div>
+                            <img id="photoPreview" class="photo-preview" style="display: none;" alt="Превью">
+                        </div>
+                        <button type="button" class="photo-remove-btn" id="photoRemoveBtn" style="display: none;">Удалить фото</button>
+                    </div>
+                </section>
+
+                <section class="create-block">
+                    <h2 class="create-block-title">Характеристики</h2>
+                    <div class="form-row">
+                        <div class="form-group"><label class="form-label">Время готовки (мин) *</label><input type="number" class="form-input" id="recipeTime" placeholder="25" min="1"></div>
+                        <div class="form-group"><label class="form-label">Сложность *</label><select class="form-select" id="recipeDifficulty"><option value="Легко">Легко</option><option value="Средне">Средне</option><option value="Сложно">Сложно</option></select></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label class="form-label">Тип блюда *</label><select class="form-select" id="recipeType"><option value="Завтрак">Завтрак</option><option value="Обед">Обед</option><option value="Ужин">Ужин</option><option value="Десерт">Десерт</option></select></div>
+                        <div class="form-group"><label class="form-label">Основной продукт *</label><select class="form-select" id="recipeProduct"><option value="Мясо">Мясо</option><option value="Птица">Птица</option><option value="Рыба">Рыба</option><option value="Овощи">Овощи</option><option value="Фрукты">Фрукты</option><option value="Грибы">Грибы</option><option value="Молочное">Молочное</option><option value="Крупы">Крупы</option><option value="Тесто">Тесто</option></select></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label class="form-label">Кухня мира</label><select class="form-select" id="recipeCuisine"><option value="Русская">Русская</option><option value="Итальянская">Итальянская</option><option value="Французская">Французская</option><option value="Азиатская">Азиатская</option><option value="Грузинская">Грузинская</option></select></div>
+                        <div class="form-group"><label class="form-label">Калорийность</label><input type="number" class="form-input" id="recipeCalories" placeholder="320" min="0"></div>
+                    </div>
+                </section>
+
+                <section class="create-block">
+                    <div class="create-block-head">
+                        <h2 class="create-block-title">Ингредиенты</h2>
+                        <button type="button" class="btn btn-outline" id="addIngredientBtn">+ Добавить</button>
+                    </div>
+                    <div class="dynamic-list" id="ingredientsList"></div>
+                </section>
+
+                <section class="create-block">
+                    <div class="create-block-head">
+                        <h2 class="create-block-title">Шаги приготовления</h2>
+                        <button type="button" class="btn btn-outline" id="addStepBtn">+ Добавить шаг</button>
+                    </div>
+                    <div class="dynamic-list" id="stepsList"></div>
+                </section>
+
+                <div class="create-actions">
+                    <button type="button" class="btn btn-outline btn-lg" id="saveDraftBtn">Сохранить черновик</button>
+                    <button type="button" class="btn btn-primary btn-lg" id="publishBtn">Опубликовать рецепт</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">
+    <div class="container footer-inner">
+        <div class="footer-col">
+            <div class="logo">
+                <img src="img/лого.png" alt="Логотип" class="logo-icon logo-white">
+                <span class="logo-text">Вкусно.Тут</span>
+            </div>
+            <p class="footer-copy">© 2026 Вкусно.Тут. Все права защищены.</p>
+        </div>
+        <div class="footer-col">
+            <h4 class="footer-title">О нас</h4>
+            <a href="about.html" class="footer-link">О сервисе</a>
+            <a href="about.html#mission" class="footer-link">Наша миссия</a>
+            <a href="about.html#team" class="footer-link">Команда</a>
+            <a href="about.html#contact" class="footer-link">Контакты</a>
+        </div>
+        <div class="footer-col">
+            <h4 class="footer-title">Помощь</h4>
+            <a href="catalog.html" class="footer-link">Каталог рецептов</a>
+            <a href="create.html" class="footer-link">Создать рецепт</a>
+            <a href="about.html#contact" class="footer-link">Поддержка</a>
+        </div>
+        <div class="footer-col">
+            <h4 class="footer-title">Соцсети</h4>
+            <a href="https://vk.com" target="_blank" rel="noopener noreferrer" class="footer-link">ВКонтакте</a>
+            <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="footer-link">Telegram</a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="footer-link">YouTube</a>
+        </div>
+    </div>
+</footer>
+    <script src="catalog-data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
