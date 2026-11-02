@@ -3,31 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Отчеты по базе данных — Вкусно.Тут</title>
+    
+    <!-- Подключение библиотеки для создания Excel-файлов -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <!-- Подключение базы рецептов -->
     <script src="catalog-data.js"></script>
+    
     <style>
         body { font-family: 'Segoe UI', sans-serif; background: #F1F5F9; margin: 0; padding: 40px; }
         .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         
         .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #E2E8F0; padding-bottom: 20px; margin-bottom: 20px; }
         h1 { font-size: 24px; color: #1E293B; margin: 0; }
-        .print-btn { background: #FF6B35; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 15px; }
+        .print-btn { background: #FF6B35; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 15px; transition: 0.2s; }
+        .print-btn:hover { background: #E8551F; }
         
         /* Вкладки */
         .tabs { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 1px solid #E2E8F0; }
-        .tab { padding: 10px 20px; cursor: pointer; font-weight: bold; color: #64748B; border-bottom: 3px solid transparent; }
+        .tab { padding: 10px 20px; cursor: pointer; font-weight: bold; color: #64748B; border-bottom: 3px solid transparent; transition: 0.2s; }
+        .tab:hover { color: #FF6B35; }
         .tab.active { color: #FF6B35; border-bottom-color: #FF6B35; }
         
         /* Таблицы */
         .table-container { display: none; }
         .table-container.active { display: block; }
+        
+        /* Шапка таблицы с кнопкой Excel */
+        .table-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .table-header h2 { margin: 0; font-size: 18px; color: #1E293B; }
+        
+        .excel-btn { 
+            background: #10B981; color: white; border: none; 
+            padding: 8px 16px; border-radius: 8px; cursor: pointer; 
+            font-weight: bold; font-size: 14px; transition: 0.2s; 
+            display: flex; align-items: center; gap: 6px;
+        }
+        .excel-btn:hover { background: #059669; }
+
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         th, td { border: 1px solid #E2E8F0; padding: 12px; text-align: left; font-size: 14px; }
         th { background: #F8FAFC; color: #475569; font-weight: bold; }
-                /* Для печати */
+        
+        /* Для печати */
         @media print {
             body { background: #fff; padding: 0; }
             .container { box-shadow: none; padding: 0; }
-            .tabs, .print-btn { display: none; }
+            .tabs, .print-btn, .excel-btn { display: none; }
             
             /* Скрываем ВСЕ таблицы при печати */
             .table-container { display: none !important; }
@@ -35,7 +56,7 @@
             /* Показываем ТОЛЬКО активную таблицу */
             .table-container.active { display: block !important; margin-bottom: 30px; }
             
-            .table-container h2 { font-size: 18px; margin-top: 20px; border-bottom: 1px solid #000; }
+            .table-header h2 { font-size: 18px; margin-top: 20px; border-bottom: 1px solid #000; }
             th, td { border: 1px solid #000; }
             th { background: #eee !important; -webkit-print-color-adjust: exact; }
         }
@@ -48,7 +69,7 @@
                 <h1>Отчеты по базе данных</h1>
                 <p style="margin: 5px 0 0; color: #64748B; font-size: 14px;">Дата: <span id="reportDate"></span></p>
             </div>
-            <button class="print-btn" onclick="window.print()"> Печать / Сохранить в PDF</button>
+            <button class="print-btn" onclick="window.print()"> Печать / PDF</button>
         </div>
 
         <!-- Вкладки -->
@@ -56,12 +77,15 @@
             <div class="tab active" onclick="showReport('report-users', this)"> Пользователи</div>
             <div class="tab" onclick="showReport('report-base', this)"> Базовые рецепты</div>
             <div class="tab" onclick="showReport('report-user-recipes', this)">Рецепты юзеров</div>
-            <div class="tab" onclick="showReport('report-logs', this)">Журнал действий</div>
+            <div class="tab" onclick="showReport('report-logs', this)"> Журнал действий</div>
         </div>
 
         <!-- 1. ОТЧЕТ: ПОЛЬЗОВАТЕЛИ -->
         <div id="report-users" class="table-container active">
-            <h2>Таблица «Пользователи»</h2>
+            <div class="table-header">
+                <h2>Таблица «Пользователи»</h2>
+                <button class="excel-btn" onclick="exportToExcel('users')">Скачать в Excel</button>
+            </div>
             <table>
                 <thead><tr><th>ID</th><th>Имя</th><th>Email (Логин)</th><th>Роль</th><th>Дата рег.</th></tr></thead>
                 <tbody id="tblUsers"></tbody>
@@ -70,7 +94,10 @@
 
         <!-- 2. ОТЧЕТ: БАЗОВЫЕ РЕЦЕПТЫ -->
         <div id="report-base" class="table-container">
-            <h2>Таблица «Базовые рецепты»</h2>
+            <div class="table-header">
+                <h2>Таблица «Базовые рецепты»</h2>
+                <button class="excel-btn" onclick="exportToExcel('base')"> Скачать в Excel</button>
+            </div>
             <table>
                 <thead><tr><th>ID</th><th>Название</th><th>Автор</th><th>Время</th><th>Сложность</th><th>Ккал</th></tr></thead>
                 <tbody id="tblBaseRecipes"></tbody>
@@ -79,7 +106,10 @@
 
         <!-- 3. ОТЧЕТ: РЕЦЕПТЫ ЮЗЕРОВ -->
         <div id="report-user-recipes" class="table-container">
-            <h2>Таблица «Пользовательские рецепты»</h2>
+            <div class="table-header">
+                <h2>Таблица «Пользовательские рецепты»</h2>
+                <button class="excel-btn" onclick="exportToExcel('userRecipes')"> Скачать в Excel</button>
+            </div>
             <table>
                 <thead><tr><th>ID</th><th>Название</th><th>Автор</th><th>Время</th><th>Сложность</th></tr></thead>
                 <tbody id="tblUserRecipes"></tbody>
@@ -88,7 +118,10 @@
 
         <!-- 4. ОТЧЕТ: ЛОГИ -->
         <div id="report-logs" class="table-container">
-            <h2>Журнал операций (Логи)</h2>
+            <div class="table-header">
+                <h2>Журнал операций (Логи)</h2>
+                <button class="excel-btn" onclick="exportToExcel('logs')">Скачать в Excel</button>
+            </div>
             <table>
                 <thead><tr><th>Дата и время</th><th>Пользователь</th><th>Действие</th></tr></thead>
                 <tbody id="tblLogs"></tbody>
@@ -105,6 +138,7 @@
             element.classList.add('active');
         }
 
+        // Загрузка данных при открытии
         document.addEventListener('DOMContentLoaded', function() {
             // Дата
             const now = new Date();
@@ -113,7 +147,7 @@
             // 1. Пользователи
             const users = JSON.parse(localStorage.getItem('vkusno_users') || '[]');
             const tblUsers = document.getElementById('tblUsers');
-            if (users.length === 0) tblUsers.innerHTML = '<tr><td colspan="5">Нет данных</td></tr>';
+            if (users.length === 0) tblUsers.innerHTML = '<tr><td colspan="5" style="text-align:center;">Нет данных</td></tr>';
             users.forEach((u, i) => {
                 const role = (u.email === 'admin@vkusno.tut') ? 'Администратор' : 'Пользователь';
                 const date = u.registeredAt ? new Date(u.registeredAt).toLocaleDateString('ru-RU') : '—';
@@ -136,7 +170,7 @@
                 }
             }
             const tblUserRecipes = document.getElementById('tblUserRecipes');
-            if (allUserRecipes.length === 0) tblUserRecipes.innerHTML = '<tr><td colspan="5">Нет данных</td></tr>';
+            if (allUserRecipes.length === 0) tblUserRecipes.innerHTML = '<tr><td colspan="5" style="text-align:center;">Нет данных</td></tr>';
             allUserRecipes.forEach(r => {
                 tblUserRecipes.innerHTML += `<tr><td>${r.id}</td><td>${r.name}</td><td>${r.author}</td><td>${r.time} мин</td><td>${r.difficulty}</td></tr>`;
             });
@@ -144,11 +178,81 @@
             // 4. Логи
             const logs = JSON.parse(localStorage.getItem('vkusno_logs') || '[]');
             const tblLogs = document.getElementById('tblLogs');
-            if (logs.length === 0) tblLogs.innerHTML = '<tr><td colspan="3">Нет данных</td></tr>';
+            if (logs.length === 0) tblLogs.innerHTML = '<tr><td colspan="3" style="text-align:center;">Нет данных</td></tr>';
             logs.slice().reverse().forEach(l => {
                 tblLogs.innerHTML += `<tr><td>${l.time}</td><td>${l.user}</td><td>${l.action}</td></tr>`;
             });
         });
+
+        // ============ ВЫГРУЗКА В EXCEL ============
+        function exportToExcel(type) {
+            let data = [];
+            let filename = '';
+
+            if (type === 'users') {
+                const users = JSON.parse(localStorage.getItem('vkusno_users') || '[]');
+                data = users.map((u, i) => ({
+                    "ID": i + 1,
+                    "Имя": u.name,
+                    "Логин (Email)": u.email,
+                    "Роль": u.email === 'admin@vkusno.tut' ? 'Администратор' : 'Пользователь',
+                    "Дата регистрации": u.registeredAt ? new Date(u.registeredAt).toLocaleDateString('ru-RU') : '—'
+                }));
+                filename = 'Пользователи.xlsx';
+            } 
+            else if (type === 'base') {
+                const baseRecipes = recipes.filter(r => r.id <= 28);
+                data = baseRecipes.map(r => ({
+                    "ID": r.id,
+                    "Название": r.name,
+                    "Автор": r.author,
+                    "Время (мин)": r.time,
+                    "Сложность": r.difficulty,
+                    "Калорийность (ккал)": r.calories
+                }));
+                filename = 'Базовые_рецепты.xlsx';
+            } 
+            else if (type === 'userRecipes') {
+                let allUserRecipes = [];
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    if (key.startsWith('vkusno_published_')) {
+                        allUserRecipes = allUserRecipes.concat(JSON.parse(localStorage.getItem(key) || '[]'));
+                    }
+                }
+                data = allUserRecipes.map(r => ({
+                    "ID": r.id,
+                    "Название": r.name,
+                    "Автор": r.author,
+                    "Время (мин)": r.time,
+                    "Сложность": r.difficulty
+                }));
+                filename = 'Рецепты_пользователей.xlsx';
+            } 
+            else if (type === 'logs') {
+                const logs = JSON.parse(localStorage.getItem('vkusno_logs') || '[]');
+                data = logs.map(l => ({
+                    "Дата и время": l.time,
+                    "Пользователь": l.user,
+                    "Действие": l.action
+                }));
+                filename = 'Журнал_действий.xlsx';
+            }
+
+            // Если данных нет — предупреждаем
+            if (data.length === 0) {
+                alert('Нет данных для выгрузки.');
+                return;
+            }
+
+            // Создаем Excel-файл
+            const ws = XLSX.utils.json_to_sheet(data);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "Отчет");
+            
+            // Скачиваем
+            XLSX.writeFile(wb, filename);
+        }
     </script>
 </body>
 </html>
