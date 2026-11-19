@@ -2327,3 +2327,97 @@ img {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
 }
+/* ============================================
+   АДАПТИВ ДЛЯ ТЕЛЕФОНОВ (до 900px)
+   ============================================ */
+@media (max-width: 900px) {
+    
+    /* --- 1. Секция "Как это работает" --- */
+    .section {
+        padding: 40px 0; /* Уменьшаем гигантские отступы */
+    }
+    .section-title {
+        font-size: 26px;
+    }
+    .section-subtitle {
+        margin-bottom: 30px;
+    }
+
+    /* Перестраиваем шаги в колонку */
+    .steps {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    /* Оформляем шаг как аккуратную карточку */
+    .step {
+        width: 100%;
+        max-width: 100%;
+        background: #FFFFFF;
+        padding: 24px 20px;
+        border-radius: 16px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Уменьшаем кружочки с цифрами */
+    .step-circle {
+        width: 60px;
+        height: 60px;
+        font-size: 26px;
+        margin-bottom: 16px;
+    }
+
+    /* Прячем стрелки, они мешают на телефоне */
+    .step-arrow {
+        display: none !important;
+    }
+
+    /* --- 2. Мобильные фильтры в каталоге --- */
+    .filters {
+        position: static;
+        padding: 16px;
+        margin-bottom: 20px;
+    }
+    .filters-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0;
+    }
+    .filters-toggle-btn {
+        display: block; /* Показываем кнопку только на телефоне */
+        background: #FF6B35;
+        color: white;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    .filters-content {
+        display: none; /* Скрываем чекбоксы по умолчанию */
+        padding-top: 15px;
+    }
+    .filters-content.active {
+        display: block; /* Показываем при клике */
+    }
+
+    /* --- 3. Общие исправления для мобильных --- */
+    .banner-title {
+        font-size: 36px;
+    }
+    .banner-subtitle {
+        font-size: 16px;
+    }
+    .banner-buttons {
+        flex-direction: column;
+    }
+    .cards-grid,
+    .categories-grid,
+    .profile-grid,
+    .results-grid {
+        grid-template-columns: 1fr; /* Сетки в одну колонку */
+    }
+}
