@@ -2100,6 +2100,10 @@ img {
    АДАПТИВ (ДЛЯ ТЕЛЕФОНОВ И ПЛАНШЕТОВ)
    ============================================ */
 
+/* ============================================
+   ФИНАЛЬНЫЙ АДАПТИВ (ТОЛЬКО ДЛЯ ТЕЛЕФОНОВ И ПЛАНШЕТОВ)
+   ============================================ */
+
 /* --- Планшеты (до 1024px) --- */
 @media (max-width: 1024px) {
     .cards-grid,
@@ -2117,16 +2121,7 @@ img {
 
 /* --- Телефоны и небольшие планшеты (до 900px) --- */
 @media (max-width: 900px) {
-    /* Категории на главной */
-    .category-img {
-        height: 150px;
-    }
-    .category-img .category-name {
-        font-size: 16px;
-        padding: 12px;
-    }
-
-    /* Бургер-меню */
+    /* 1. Меню (Бургер) */
     .burger {
         display: flex;
     }
@@ -2153,8 +2148,36 @@ img {
         width: 100%;
         margin-top: 15px;
     }
+
+       /* 2. Баннер (жесткое исправление) */
+    .banner {
+        height: auto;
+        min-height: 450px;
+        padding: 60px 0;
+        /* Принудительно задаем фон с картинкой */
+        background-image: url('img/баннер.webp') !important;
+        background-position: center center !important;
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+    }
     
-    /* Сетки в одну колонку */
+    /* Убираем черный градиент на телефоне, если он перекрывает картинку */
+    .banner-overlay {
+        background: rgba(0, 0, 0, 0.5) !important; /* Оставляем легкое затемнение для читаемости текста */
+    }
+
+    .banner-title {
+        font-size: 28px; /* Уменьшили шрифт, чтобы слово "любимые" влезало */
+        line-height: 1.3;
+    }
+    .banner-subtitle {
+        font-size: 14px;
+    }
+    .banner-buttons {
+        flex-direction: column;
+    }
+    
+    /* 3. Сетки в одну колонку */
     .cards-grid,
     .categories-grid,
     .stats-inner,
@@ -2165,24 +2188,80 @@ img {
     .reviews-grid {
         grid-template-columns: 1fr;
     }
-    
-    /* Баннер */
-    .banner {
-        height: auto;
-        min-height: 400px;
-        padding: 60px 0;
+    .category-img {
+        height: 150px;
     }
-    .banner-title {
-        font-size: 36px;
-    }
-    .banner-subtitle {
+    .category-img .category-name {
         font-size: 16px;
-    }
-    .banner-buttons {
-        flex-direction: column;
+        padding: 12px;
     }
 
-    /* Страница рецепта */
+    /* 4. Секция "Как это работает" */
+    .section {
+        padding: 40px 0 !important;
+    }
+    .section-title {
+        font-size: 26px;
+    }
+    .section-subtitle {
+        margin-bottom: 30px;
+    }
+    .steps {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .step {
+        width: 100%;
+        max-width: 100%;
+        background: #FFFFFF;
+        padding: 24px 20px;
+        border-radius: 16px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .step-circle {
+        width: 60px;
+        height: 60px;
+        font-size: 26px;
+        margin-bottom: 16px;
+    }
+    .step-arrow {
+        display: none !important;
+    }
+
+    /* 5. Фильтры (ВЫПАДАЮЩИЕ) */
+    .filters {
+        position: static;
+        padding: 16px;
+        margin-bottom: 20px;
+    }
+    .filters-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0;
+    }
+    .filters-toggle-btn {
+        display: block;
+        background: #FF6B35;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    .filters-content {
+        display: none;
+        padding-top: 15px;
+    }
+    .filters-content.active {
+        display: block;
+        animation: slideDown 0.3s ease;
+    }
+
+    /* 6. Страница рецепта */
     .recipe-hero,
     .recipe-step,
     .recipe-day {
@@ -2194,11 +2273,15 @@ img {
     .recipe-hero-img {
         height: 250px;
     }
-    
-    /* Формы и профиль */
-    .form-row {
-        grid-template-columns: 1fr;
+    .recipe-day-content {
+        padding: 24px;
     }
+    .recipe-day-title {
+        font-size: 28px;
+    }
+
+    /* 7. Формы и профиль */
+    .form-row { grid-template-columns: 1fr; }
     .profile-header {
         flex-direction: column;
         text-align: center;
@@ -2208,34 +2291,38 @@ img {
         width: 100%;
         flex-direction: column;
     }
-    .profile-actions .btn {
-        width: 100%;
-    }
-    .dynamic-row {
-        flex-wrap: wrap;
-    }
+    .profile-actions .btn { width: 100%; }
     .create-actions {
         flex-direction: column;
     }
-    .create-actions .btn {
-        width: 100%;
-    }
-    .create-title {
-        font-size: 28px;
-    }
+    .create-actions .btn { width: 100%; }
 
-    /* Подвал */
+    /* 8. Подвал (АККУРАТНЫЙ) */
+       /* 8. Подвал */
+    .footer { padding: 40px 0 20px; }
     .footer-inner {
         grid-template-columns: 1fr;
-        text-align: center;
+        gap: 24px;
+        text-align: left; /* Меняем на left */
     }
     .footer-col .logo {
-        justify-content: center;
+        justify-content: flex-start; /* Логотип влево */
+        margin-bottom: 10px;
+    }
+    .footer-title {
+        margin-bottom: 12px;
+        font-size: 16px;
+    }
+    .footer-link {
+        margin-bottom: 8px;
+    }
+    .footer-copy {
+        margin-top: 10px;
+        font-size: 13px;
     }
 
-    /* Страница "О нас" */
+    /* 9. Страница "О нас" */
     .about-title { font-size: 32px; }
-    .about-subtitle { font-size: 15px; }
     .about-block-title { font-size: 24px; }
     .about-stat-number { font-size: 32px; }
     .about-mission, .about-contact { padding: 24px; }
@@ -2243,15 +2330,9 @@ img {
 
 /* --- Маленькие телефоны (до 480px) --- */
 @media (max-width: 480px) {
-    .container {
-        padding: 0 15px;
-    }
-    .banner-title {
-        font-size: 28px;
-    }
-    .section-title {
-        font-size: 26px;
-    }
+    .container { padding: 0 15px; }
+    .banner-title { font-size: 28px; }
+    .section-title { font-size: 24px; }
     .portion-btn {
         font-size: 14px;
         padding: 8px 12px;
@@ -2265,159 +2346,9 @@ img {
         gap: 5px;
     }
 }
-/* ============================================
-   ФИЛЬТРЫ НА ТЕЛЕФОНЕ (ВЫПАДАЮЩИЕ)
-   ============================================ */
 
-/* По умолчанию на ПК кнопку не видно, а контент открыт */
-.filters-toggle-btn {
-    display: none;
-}
-
-@media (max-width: 900px) {
-    /* Делаем панель фильтров обычной (без прилипания) */
-    .filters {
-        position: static;
-        padding: 16px;
-        margin-bottom: 20px;
-    }
-
-    /* Выравниваем заголовок и кнопку в одну строку */
-    .filters-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 0;
-    }
-
-    /* Показываем кнопку */
-    .filters-toggle-btn {
-        display: block;
-        background: #FF6B35;
-        color: #FFFFFF;
-        border: none;
-        padding: 8px 16px;
-        border-radius: 8px;
-        font-weight: 600;
-        font-size: 14px;
-        cursor: pointer;
-        font-family: inherit;
-    }
-
-    /* Скрываем список чекбоксов */
-    .filters-content {
-        display: none; 
-        padding-top: 15px;
-    }
-
-    /* Если добавили класс active — показываем */
-    .filters-content.active {
-        display: block;
-        animation: slideDown 0.3s ease;
-    }
-
-    .filters-header .filter-heading {
-        margin-bottom: 0;
-        font-size: 16px;
-    }
-}
-
-/* Плавное появление */
+/* Анимация для фильтров */
 @keyframes slideDown {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
-}
-/* ============================================
-   АДАПТИВ ДЛЯ ТЕЛЕФОНОВ (до 900px)
-   ============================================ */
-@media (max-width: 900px) {
-    
-    /* --- 1. Секция "Как это работает" --- */
-    .section {
-        padding: 40px 0; /* Уменьшаем гигантские отступы */
-    }
-    .section-title {
-        font-size: 26px;
-    }
-    .section-subtitle {
-        margin-bottom: 30px;
-    }
-
-    /* Перестраиваем шаги в колонку */
-    .steps {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-
-    /* Оформляем шаг как аккуратную карточку */
-    .step {
-        width: 100%;
-        max-width: 100%;
-        background: #FFFFFF;
-        padding: 24px 20px;
-        border-radius: 16px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
-
-    /* Уменьшаем кружочки с цифрами */
-    .step-circle {
-        width: 60px;
-        height: 60px;
-        font-size: 26px;
-        margin-bottom: 16px;
-    }
-
-    /* Прячем стрелки, они мешают на телефоне */
-    .step-arrow {
-        display: none !important;
-    }
-
-    /* --- 2. Мобильные фильтры в каталоге --- */
-    .filters {
-        position: static;
-        padding: 16px;
-        margin-bottom: 20px;
-    }
-    .filters-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 0;
-    }
-    .filters-toggle-btn {
-        display: block; /* Показываем кнопку только на телефоне */
-        background: #FF6B35;
-        color: white;
-        border: none;
-        padding: 10px 16px;
-        border-radius: 8px;
-        font-weight: 600;
-        font-size: 14px;
-        cursor: pointer;
-    }
-    .filters-content {
-        display: none; /* Скрываем чекбоксы по умолчанию */
-        padding-top: 15px;
-    }
-    .filters-content.active {
-        display: block; /* Показываем при клике */
-    }
-
-    /* --- 3. Общие исправления для мобильных --- */
-    .banner-title {
-        font-size: 36px;
-    }
-    .banner-subtitle {
-        font-size: 16px;
-    }
-    .banner-buttons {
-        flex-direction: column;
-    }
-    .cards-grid,
-    .categories-grid,
-    .profile-grid,
-    .results-grid {
-        grid-template-columns: 1fr; /* Сетки в одну колонку */
-    }
 }
