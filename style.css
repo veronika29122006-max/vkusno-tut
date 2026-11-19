@@ -2096,13 +2096,172 @@ img {
     color: #FFFFFF;
 }
 
-/* Адаптив */
+/* ============================================
+   АДАПТИВ (ДЛЯ ТЕЛЕФОНОВ И ПЛАНШЕТОВ)
+   ============================================ */
+
+/* --- Планшеты (до 1024px) --- */
+@media (max-width: 1024px) {
+    .cards-grid,
+    .results-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .about-mission, .about-contact {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .about-stats, .about-team {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* --- Телефоны и небольшие планшеты (до 900px) --- */
 @media (max-width: 900px) {
+    /* Категории на главной */
     .category-img {
         height: 150px;
     }
     .category-img .category-name {
         font-size: 16px;
         padding: 12px;
+    }
+
+    /* Бургер-меню */
+    .burger {
+        display: flex;
+    }
+    .nav {
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: #FFFFFF;
+        flex-direction: column;
+        padding: 20px;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.3s;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+    .nav.open {
+        max-height: 500px;
+        opacity: 1;
+    }
+    .header-buttons {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 15px;
+    }
+    
+    /* Сетки в одну колонку */
+    .cards-grid,
+    .categories-grid,
+    .stats-inner,
+    .profile-stats,
+    .profile-grid,
+    .catalog-layout,
+    .results-grid,
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Баннер */
+    .banner {
+        height: auto;
+        min-height: 400px;
+        padding: 60px 0;
+    }
+    .banner-title {
+        font-size: 36px;
+    }
+    .banner-subtitle {
+        font-size: 16px;
+    }
+    .banner-buttons {
+        flex-direction: column;
+    }
+
+    /* Страница рецепта */
+    .recipe-hero,
+    .recipe-step,
+    .recipe-day {
+        grid-template-columns: 1fr;
+    }
+    .recipe-step-content {
+        padding: 20px;
+    }
+    .recipe-hero-img {
+        height: 250px;
+    }
+    
+    /* Формы и профиль */
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px;
+    }
+    .profile-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+    .profile-actions .btn {
+        width: 100%;
+    }
+    .dynamic-row {
+        flex-wrap: wrap;
+    }
+    .create-actions {
+        flex-direction: column;
+    }
+    .create-actions .btn {
+        width: 100%;
+    }
+    .create-title {
+        font-size: 28px;
+    }
+
+    /* Подвал */
+    .footer-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .footer-col .logo {
+        justify-content: center;
+    }
+
+    /* Страница "О нас" */
+    .about-title { font-size: 32px; }
+    .about-subtitle { font-size: 15px; }
+    .about-block-title { font-size: 24px; }
+    .about-stat-number { font-size: 32px; }
+    .about-mission, .about-contact { padding: 24px; }
+}
+
+/* --- Маленькие телефоны (до 480px) --- */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    .banner-title {
+        font-size: 28px;
+    }
+    .section-title {
+        font-size: 26px;
+    }
+    .portion-btn {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+    .comment-submit {
+        width: 100%;
+        align-self: stretch;
+    }
+    .ingredient {
+        flex-direction: column;
+        gap: 5px;
     }
 }
