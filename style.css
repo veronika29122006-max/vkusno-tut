@@ -2265,3 +2265,65 @@ img {
         gap: 5px;
     }
 }
+/* ============================================
+   ФИЛЬТРЫ НА ТЕЛЕФОНЕ (ВЫПАДАЮЩИЕ)
+   ============================================ */
+
+/* По умолчанию на ПК кнопку не видно, а контент открыт */
+.filters-toggle-btn {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    /* Делаем панель фильтров обычной (без прилипания) */
+    .filters {
+        position: static;
+        padding: 16px;
+        margin-bottom: 20px;
+    }
+
+    /* Выравниваем заголовок и кнопку в одну строку */
+    .filters-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0;
+    }
+
+    /* Показываем кнопку */
+    .filters-toggle-btn {
+        display: block;
+        background: #FF6B35;
+        color: #FFFFFF;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        font-family: inherit;
+    }
+
+    /* Скрываем список чекбоксов */
+    .filters-content {
+        display: none; 
+        padding-top: 15px;
+    }
+
+    /* Если добавили класс active — показываем */
+    .filters-content.active {
+        display: block;
+        animation: slideDown 0.3s ease;
+    }
+
+    .filters-header .filter-heading {
+        margin-bottom: 0;
+        font-size: 16px;
+    }
+}
+
+/* Плавное появление */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
