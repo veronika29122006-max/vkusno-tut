@@ -41,45 +41,53 @@
 
     <section class="catalog-main">
         <div class="container catalog-layout">
-            <aside class="filters">
-                <h3 class="filters-title">Фильтры</h3>
-                <div class="filter-group"><h4 class="filter-heading">Тип блюда</h4>
-                    <label class="filter-label"><input type="checkbox" data-filter="type" value="Завтрак"><span>Завтрак</span></label>
-                    <label class="filter-label"><input type="checkbox" data-filter="type" value="Обед"><span>Обед</span></label>
-                    <label class="filter-label"><input type="checkbox" data-filter="type" value="Ужин"><span>Ужин</span></label>
-                    <label class="filter-label"><input type="checkbox" data-filter="type" value="Десерт"><span>Десерт</span></label>
-                </div>
-                <div class="filter-group"><h4 class="filter-heading">Основной продукт</h4>
-                    <label class="filter-label"><input type="checkbox" data-filter="product" value="Мясо"><span>Мясо</span></label>
-                    <label class="filter-label"><input type="checkbox" data-filter="product" value="Птица"><span>Птица</span></label>
-                    <label class="filter-label"><input type="checkbox" data-filter="product" value="Рыба"><span>Рыба</span></label>
-                    <label class="filter-label"><input type="checkbox" data-filter="product" value="Овощи"><span>Овощи</span></label>
-                    <label class="filter-label"><input type="checkbox" data-filter="product" value="Фрукты"><span>Фрукты</span></label>
-                    <label class="filter-label"><input type="checkbox" data-filter="product" value="Грибы"><span>Грибы</span></label>
-                    <label class="filter-label"><input type="checkbox" data-filter="product" value="Молочное"><span>Молочное</span></label>
-                    <label class="filter-label"><input type="checkbox" data-filter="product" value="Крупы"><span>Крупы</span></label>
-                    <label class="filter-label"><input type="checkbox" data-filter="product" value="Тесто"><span>Тесто</span></label>
-                </div>
-                <div class="filter-group"><h4 class="filter-heading">Кухня мира</h4>
-                    <label class="filter-label"><input type="checkbox" data-filter="cuisine" value="Итальянская"><span>Итальянская</span></label>
-                    <label class="filter-label"><input type="checkbox" data-filter="cuisine" value="Русская"><span>Русская</span></label>
-                    <label class="filter-label"><input type="checkbox" data-filter="cuisine" value="Азиатская"><span>Азиатская</span></label>
-                    <label class="filter-label"><input type="checkbox" data-filter="cuisine" value="Французская"><span>Французская</span></label>
-                    <label class="filter-label"><input type="checkbox" data-filter="cuisine" value="Грузинская"><span>Грузинская</span></label>
-                </div>
-                <div class="filter-group"><h4 class="filter-heading">Время готовки</h4>
-                    <label class="filter-label"><input type="radio" name="time" value="short"><span>До 15 мин</span></label>
-                    <label class="filter-label"><input type="radio" name="time" value="medium"><span>15-30 мин</span></label>
-                    <label class="filter-label"><input type="radio" name="time" value="long"><span>30-60 мин</span></label>
-                    <label class="filter-label"><input type="radio" name="time" value="verylong"><span>Больше часа</span></label>
-                </div>
-                <div class="filter-group"><h4 class="filter-heading">Сложность</h4>
-                    <label class="filter-label"><input type="checkbox" data-filter="difficulty" value="Легко"><span>Легко</span></label>
-                    <label class="filter-label"><input type="checkbox" data-filter="difficulty" value="Средне"><span>Средне</span></label>
-                    <label class="filter-label"><input type="checkbox" data-filter="difficulty" value="Сложно"><span>Сложно</span></label>
-                </div>
-                <button class="reset-filters" id="resetFilters">Сбросить фильтры</button>
-            </aside>
+            <aside class="filters" id="filtersBlock">
+    <!-- Этот заголовок с кнопкой будет виден только на телефоне -->
+    <div class="filters-header">
+        <h3 class="filter-heading">Фильтры</h3>
+        <button class="filters-toggle-btn" id="filtersToggleBtn">Открыть ▼</button>
+    </div>
+    
+    <!-- ВОТ СЮДА МЫ ОБЕРНУЛИ ВСЕ ФИЛЬТРЫ -->
+    <div class="filters-content" id="filtersContent">
+        <div class="filter-group"><h4 class="filter-heading">Тип блюда</h4>
+            <label class="filter-label"><input type="checkbox" data-filter="type" value="Завтрак"><span>Завтрак</span></label>
+            <label class="filter-label"><input type="checkbox" data-filter="type" value="Обед"><span>Обед</span></label>
+            <label class="filter-label"><input type="checkbox" data-filter="type" value="Ужин"><span>Ужин</span></label>
+            <label class="filter-label"><input type="checkbox" data-filter="type" value="Десерт"><span>Десерт</span></label>
+        </div>
+        <div class="filter-group"><h4 class="filter-heading">Основной продукт</h4>
+            <label class="filter-label"><input type="checkbox" data-filter="product" value="Мясо"><span>Мясо</span></label>
+            <label class="filter-label"><input type="checkbox" data-filter="product" value="Птица"><span>Птица</span></label>
+            <label class="filter-label"><input type="checkbox" data-filter="product" value="Рыба"><span>Рыба</span></label>
+            <label class="filter-label"><input type="checkbox" data-filter="product" value="Овощи"><span>Овощи</span></label>
+            <label class="filter-label"><input type="checkbox" data-filter="product" value="Фрукты"><span>Фрукты</span></label>
+            <label class="filter-label"><input type="checkbox" data-filter="product" value="Грибы"><span>Грибы</span></label>
+            <label class="filter-label"><input type="checkbox" data-filter="product" value="Молочное"><span>Молочное</span></label>
+            <label class="filter-label"><input type="checkbox" data-filter="product" value="Крупы"><span>Крупы</span></label>
+            <label class="filter-label"><input type="checkbox" data-filter="product" value="Тесто"><span>Тесто</span></label>
+        </div>
+        <div class="filter-group"><h4 class="filter-heading">Кухня мира</h4>
+            <label class="filter-label"><input type="checkbox" data-filter="cuisine" value="Итальянская"><span>Итальянская</span></label>
+            <label class="filter-label"><input type="checkbox" data-filter="cuisine" value="Русская"><span>Русская</span></label>
+            <label class="filter-label"><input type="checkbox" data-filter="cuisine" value="Азиатская"><span>Азиатская</span></label>
+            <label class="filter-label"><input type="checkbox" data-filter="cuisine" value="Французская"><span>Французская</span></label>
+            <label class="filter-label"><input type="checkbox" data-filter="cuisine" value="Грузинская"><span>Грузинская</span></label>
+        </div>
+        <div class="filter-group"><h4 class="filter-heading">Время готовки</h4>
+            <label class="filter-label"><input type="radio" name="time" value="short"><span>До 15 мин</span></label>
+            <label class="filter-label"><input type="radio" name="time" value="medium"><span>15-30 мин</span></label>
+            <label class="filter-label"><input type="radio" name="time" value="long"><span>30-60 мин</span></label>
+            <label class="filter-label"><input type="radio" name="time" value="verylong"><span>Больше часа</span></label>
+        </div>
+        <div class="filter-group"><h4 class="filter-heading">Сложность</h4>
+            <label class="filter-label"><input type="checkbox" data-filter="difficulty" value="Легко"><span>Легко</span></label>
+            <label class="filter-label"><input type="checkbox" data-filter="difficulty" value="Средне"><span>Средне</span></label>
+            <label class="filter-label"><input type="checkbox" data-filter="difficulty" value="Сложно"><span>Сложно</span></label>
+        </div>
+        <button class="reset-filters" id="resetFilters">Сбросить фильтры</button>
+    </div>
+</aside>
 
             <main class="results">
                 <div class="sort-bar">
