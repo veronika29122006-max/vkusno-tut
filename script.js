@@ -1013,3 +1013,20 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 });
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtn = document.getElementById('filtersToggleBtn');
+    const filtersContent = document.getElementById('filtersContent');
+
+    if (toggleBtn && filtersContent) {
+        toggleBtn.addEventListener('click', function() {
+            filtersContent.classList.toggle('active');
+            
+            // Меняем текст на кнопке
+            if (filtersContent.classList.contains('active')) {
+                toggleBtn.innerHTML = 'Скрыть ▲';
+            } else {
+                toggleBtn.innerHTML = 'Открыть ▼';
+            }
+        });
+    }
+});
